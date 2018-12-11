@@ -288,6 +288,26 @@ paths:
           description: The room to get the member events for.
           required: true
           x-example: "!636q39766251:example.com"
+        - in: query
+          type: string
+          name: at
+          description: |-
+            The token defining the timeline position as-of which to return
+            the list of members. This token can be obtained from a batch token
+            returned for each room by the sync API, or from
+            a ``start``/``end`` token returned by a ``/messages`` request.
+        - in: query
+          type: string
+          name: membership
+          enum: ["join", "invite", "leave"]
+          description: |-
+            Only return users with the specified membership
+        - in: query
+          type: string
+          name: not_membership
+          enum: ["join", "invite", "leave"]
+          description: |-
+            Only return users with membership state other than specified
       security:
         - accessToken: []
       responses:
